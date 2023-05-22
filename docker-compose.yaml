@@ -1,0 +1,45 @@
+version: "3.3"
+
+services:
+
+  roscore:
+    image: ros:noetic
+    command: roscore
+    environment:
+      - "ROS_HOSTNAME=roscore"
+    networks:
+      - rosnetwork
+
+  vive:
+    build: ./
+    privileged: true
+    environment:
+      - "NODE_NAME=vive"
+      - "ROS_HOSTNAME=vive"
+      - "ROS_MASTER_URI=http://roscore:11311"
+    devices:
+      - /dev/bus/usb:/dev/bus/usb:rwm
+    volumes:
+      - ~/.local/share/Steam/:/root/.steam/steam
+    networks:
+      - rosnetwork
+    depends_on:
+      - roscore
+    restart: always
+
+  bridge:
+    image: ros:foxy-ros1-bridge
+    environment:
+      - "ROS_HOSTNAME=bridge"
+      - "ROS_MASTER_URI=http://roscore:11311"
+      - "RMW_IMPLEMENTATION=rmw_fastrtps_cpp"
+      - "ROS_DISCOVERY_SERVER=discovery-server:11811"
+    command: ros2 run ros1_bridge dynamic_bridge --bridge-all-topics
+    depends_on:
+      - roscore
+    networks:
+      - rosnetwork
+
+networks:
+  rosnetwork:
+
