@@ -13,7 +13,7 @@ based on https://github.com/robosavvy/vive_ros
 
 
 ## install:
-
+https://youtu.be/MNut-uDyCrQ
 - plug in HTC Vive
 - you can install steam using the way install_steam.sh script, or otherwise
 - install steamVR using steam client
