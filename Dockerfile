@@ -17,6 +17,7 @@ RUN apt update -q && \
     udev \
     wget \
     git \
+    usbutils \
     ros-noetic-image-transport \
     ros-noetic-cv-bridge \
     ros-noetic-tf \

@@ -2,6 +2,8 @@
 
 Here are the configs for running HTCvive-ROS in docker and bridging to ROS2
 
+based on https://github.com/robosavvy/vive_ros
+
 ## requirements:
 - docker.io
 - docker-compose
