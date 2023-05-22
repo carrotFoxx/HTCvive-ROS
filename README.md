@@ -1,4 +1,4 @@
-# HTCvive-ROS
+# HTC VIVE - ROS
 
 Here are the configs for running HTCvive-ROS in docker and bridging to ROS2
 
